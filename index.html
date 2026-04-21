@@ -1026,6 +1026,7 @@
 
   function renderShop() {
     const grid = document.getElementById('shopGrid');
+    if (!grid) return;
     grid.innerHTML = produkter.map(p => {
       const sold = p.status === 'såld';
       return `
@@ -1116,11 +1117,11 @@
 
   // Filter
   function filterCards(cat, btn){
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.portfolio-card').forEach(card=>{
+    document.querySelectorAll('#portfolioGrid .portfolio-card').forEach(card=>{
       card.style.display = (cat==='alla'||card.dataset.cat===cat) ? '' : 'none';
     });
+    btn.closest('.portfolio-filter').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
   }
 
   // Modal
