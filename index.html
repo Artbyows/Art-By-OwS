@@ -117,9 +117,9 @@
   .om-grid { display:grid; grid-template-columns:1fr 1.3fr; gap:7rem; align-items:center; }
 
   .om-img-wrap { position:relative; }
-  .om-img-frame { position:relative; border-radius:60% 40% 55% 45% / 50% 45% 55% 50%; overflow:hidden; }
-  .om-img-frame::before { content:''; position:absolute; top:-12px; left:-12px; right:12px; bottom:12px; border:1.5px solid var(--brown); z-index:0; border-radius:60% 40% 55% 45% / 50% 45% 55% 50%; }
-  .om-img-frame img { position:relative; z-index:1; width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:60% 40% 55% 45% / 50% 45% 55% 50%; }
+  .om-img-frame { position:relative; }
+  .om-img-frame::before { content:''; position:absolute; top:-12px; left:-12px; right:12px; bottom:12px; border:1.5px solid var(--brown); z-index:0; }
+  .om-img-frame img { position:relative; z-index:1; width:100%; aspect-ratio:3/4; object-fit:cover; }
 
   .om-tag { position:absolute; bottom:-1.5rem; right:-1.5rem; z-index:2; background:var(--orange); padding:1.2rem 1.8rem; font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; color:var(--cream); line-height:1.5; max-width:200px; }
 
