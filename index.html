@@ -3,189 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>artbyows</title>
+<title>artbyows — Oskar Svenbland</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Paytone+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream:      #EDE8DC;
-    --brown:      #3B2714;
-    --orange:     #D4702A;
-    --orange-lt:  #E8954A;
-    --orange-dk:  #B05820;
-    --sand:       #F5EFDF;
-    --brown-lt:   #6B4226;
+    --cream:    #EDE8DC;
+    --sand:     #F5EFDF;
+    --brown:    #3B2714;
+    --brown-lt: #6B4226;
+    --orange:   #C4622D;
+    --orange-lt:#E8954A;
+    --ash:      #9a8f82;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--brown); font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 17px; line-height: 1.7; cursor: none; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9000; opacity: 0.5; }
-  .cursor { width:10px; height:10px; background:var(--orange); border-radius:50%; position:fixed; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform 0.1s; }
-  .cursor-ring { width:32px; height:32px; border:2px solid var(--orange); border-radius:50%; position:fixed; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all 0.12s; opacity:0.6; }
 
-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:1.2rem 3rem; display:flex; justify-content:space-between; align-items:center; background:var(--cream); border-bottom:2.5px solid var(--brown); }
-  .nav-logo { display:flex; align-items:center; gap:0.8rem; text-decoration:none; }
-  .nav-logo img { width:44px; height:44px; border-radius:50%; border:2px solid var(--brown); }
-  .nav-logo-text { font-family:'Fredoka One',cursive; font-size:1.4rem; color:var(--brown); letter-spacing:0.02em; }
-  .nav-links { display:flex; gap:2.5rem; list-style:none; }
-  .nav-links a { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; color:var(--brown); padding:0.3rem 0; border-bottom:2px solid transparent; transition:border-color 0.25s, color 0.25s; }
-  .nav-links a:hover { border-bottom-color:var(--orange); color:var(--orange); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--brown); font-family:'Cormorant Garamond',serif; font-size:18px; line-height:1.8; cursor:none; overflow-x:hidden; }
 
-  #hem { min-height:100vh; padding-top:75px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; background:var(--cream); }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; opacity:0.5; }
+
+  .cursor { width:8px; height:8px; background:var(--orange); border-radius:50%; position:fixed; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform 0.1s; }
+  .cursor-ring { width:30px; height:30px; border:1.5px solid var(--orange); border-radius:50%; position:fixed; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all 0.12s; opacity:0.5; }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:500;
+    padding:1.8rem 3rem 1.2rem;
+    display:flex; flex-direction:column; align-items:center;
+    background:var(--cream);
+    border-bottom:2px solid var(--brown);
+  }
+
+  .nav-logo {
+    display:flex; flex-direction:column; align-items:center;
+    text-decoration:none; margin-bottom:1rem;
+  }
+  .nav-logo img { width:64px; height:64px; border-radius:50%; border:2px solid var(--brown); margin-bottom:0.6rem; }
+  .nav-logo-text { font-family:'Playfair Display',serif; font-style:italic; font-size:1.3rem; color:var(--brown); letter-spacing:0.04em; }
+
+  .nav-links { display:flex; gap:3rem; list-style:none; }
+  .nav-links a { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; color:var(--brown-lt); border-bottom:1px solid transparent; padding-bottom:0.1rem; transition:all 0.25s; }
+  .nav-links a:hover { color:var(--orange); border-bottom-color:var(--orange); }
+
+  /* ── HERO ── */
+  #hem {
+    min-height:100vh;
+    padding-top:160px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; position:relative; overflow:hidden;
+    background:var(--cream);
+  }
+
   .hero-deco { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-  .deco-circle { position:absolute; border-radius:50%; border:2.5px solid var(--orange); opacity:0.12; }
-  .deco-circle:nth-child(1) { width:600px;height:600px;top:-150px;right:-150px; }
-  .deco-circle:nth-child(2) { width:400px;height:400px;bottom:-100px;left:-80px;opacity:0.08; }
-  .deco-circle:nth-child(3) { width:200px;height:200px;top:40%;left:10%;opacity:0.15; }
-  .hero-logo-wrap { animation:popIn 0.9s cubic-bezier(0.34,1.56,0.64,1) both; margin-bottom:2rem; }
-  .hero-logo-wrap img { width:200px;height:200px;border-radius:50%;border:4px solid var(--brown);box-shadow:6px 6px 0 var(--brown); }
-  .hero-title { font-family:'Fredoka One',cursive; font-size:clamp(3.5rem,10vw,8rem); color:var(--brown); line-height:0.95; letter-spacing:-0.01em; animation:fadeUp 0.8s ease 0.3s both; }
-  .hero-title span { color:var(--orange); }
-  .hero-sub { margin-top:1.5rem; font-size:1.1rem; color:var(--brown-lt); font-style:italic; max-width:480px; animation:fadeUp 0.8s ease 0.5s both; }
-  .hero-cta { margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; animation:fadeUp 0.8s ease 0.7s both; }
-  .btn-primary { background:var(--brown); color:var(--cream); font-family:'Fredoka One',cursive; font-size:1rem; letter-spacing:0.04em; padding:0.85rem 2.5rem; border:2.5px solid var(--brown); border-radius:100px; text-decoration:none; cursor:none; transition:all 0.25s; box-shadow:4px 4px 0 var(--orange); }
-  .btn-primary:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--orange); }
-  .btn-outline { background:transparent; color:var(--brown); font-family:'Fredoka One',cursive; font-size:1rem; letter-spacing:0.04em; padding:0.85rem 2.5rem; border:2.5px solid var(--brown); border-radius:100px; text-decoration:none; cursor:none; transition:all 0.25s; }
-  .btn-outline:hover { background:var(--orange); border-color:var(--orange); color:var(--cream); transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--brown); }
-  .hero-scroll-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); font-family:'Nunito',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--brown-lt); display:flex; flex-direction:column; align-items:center; gap:0.5rem; animation:bounce 2s ease infinite; }
+  .deco-circle { position:absolute; border-radius:50%; border:1.5px solid var(--orange); opacity:0.08; }
+  .deco-circle:nth-child(1) { width:700px; height:700px; top:-200px; right:-200px; }
+  .deco-circle:nth-child(2) { width:500px; height:500px; bottom:-150px; left:-150px; opacity:0.05; }
 
-  section { padding:6rem 0; }
-  .section-inner { max-width:1200px; margin:0 auto; padding:0 3rem; }
-  .section-tag { display:inline-flex; align-items:center; gap:0.6rem; font-family:'Fredoka One',cursive; font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--orange); background:var(--brown); padding:0.3rem 1rem; border-radius:100px; margin-bottom:1.5rem; }
-  .section-tag::before { content:'✦'; font-size:0.7rem; }
-  h2.section-heading { font-family:'Fredoka One',cursive; font-size:clamp(2.2rem,4vw,3.5rem); line-height:1.05; color:var(--brown); margin-bottom:1.5rem; }
-  h2.section-heading span { color:var(--orange); }
+  .hero-eyebrow { font-family:'Nunito',sans-serif; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--ash); margin-bottom:1.5rem; }
 
-  #om { background:var(--sand); border-top:2.5px solid var(--brown); border-bottom:2.5px solid var(--brown); }
-  .om-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:5rem; align-items:center; }
+  .hero-title { font-family:'Playfair Display',serif; font-size:clamp(4rem,9vw,8rem); line-height:0.95; color:var(--brown); font-style:italic; margin-bottom:1.5rem; }
+  .hero-title span { color:var(--orange); font-style:normal; }
+
+  .hero-sub { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--brown-lt); font-style:italic; max-width:420px; line-height:1.9; margin-bottom:3rem; }
+
+  .hero-cta { display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center; }
+
+  .btn-primary { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.9rem 2.5rem; background:var(--brown); color:var(--cream); border:2px solid var(--brown); text-decoration:none; cursor:none; transition:all 0.3s; }
+  .btn-primary:hover { background:var(--orange); border-color:var(--orange); }
+
+  .btn-outline { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.9rem 2.5rem; background:transparent; color:var(--brown); border:2px solid var(--brown); text-decoration:none; cursor:none; transition:all 0.3s; }
+  .btn-outline:hover { border-color:var(--orange); color:var(--orange); }
+
+  .hero-scroll { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); font-family:'Nunito',sans-serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--ash); display:flex; flex-direction:column; align-items:center; gap:0.6rem; animation:bounce 2.5s ease infinite; }
+  .hero-scroll::after { content:''; display:block; width:1px; height:40px; background:var(--ash); }
+
+  /* ── QUOTE STRIP ── */
+  .quote-strip {
+    background:var(--brown);
+    padding:4rem 6rem;
+    text-align:center;
+  }
+  .quote-strip blockquote {
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:clamp(1.3rem,2.5vw,2rem);
+    color:var(--cream);
+    max-width:700px;
+    margin:0 auto;
+    line-height:1.6;
+    opacity:0.9;
+  }
+  .quote-strip cite {
+    display:block; margin-top:1.5rem;
+    font-family:'Nunito',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--orange-lt); font-style:normal;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding:8rem 0; }
+  .section-inner { max-width:1200px; margin:0 auto; padding:0 4rem; }
+
+  .section-label { font-family:'Nunito',sans-serif; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--orange); margin-bottom:1rem; display:flex; align-items:center; gap:1.2rem; }
+  .section-label::before { content:''; display:block; width:32px; height:1px; background:var(--orange); }
+
+  h2.sh { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,4vw,3.8rem); font-style:italic; line-height:1.1; color:var(--brown); margin-bottom:3rem; }
+  h2.sh em { color:var(--orange); font-style:normal; }
+
+  /* ── OM MIG ── */
+  #om { background:var(--sand); }
+
+  .om-grid { display:grid; grid-template-columns:1fr 1.3fr; gap:7rem; align-items:center; }
+
   .om-img-wrap { position:relative; }
-  .om-img { width:100%; aspect-ratio:1/1; background:linear-gradient(135deg,var(--orange-lt),var(--orange-dk)); border-radius:40% 60% 60% 40%/40% 40% 60% 60%; border:3px solid var(--brown); overflow:hidden; box-shadow:8px 8px 0 var(--brown); animation:morph 8s ease-in-out infinite; }
-  .om-img img { width:100%; height:100%; object-fit:cover; }
-  .om-img-sticker { position:absolute; bottom:-20px; right:-20px; width:80px; height:80px; background:var(--orange); border:3px solid var(--brown); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Fredoka One',cursive; font-size:0.65rem; color:var(--cream); text-align:center; line-height:1.2; transform:rotate(12deg); box-shadow:3px 3px 0 var(--brown); }
-  .om-text p { color:var(--brown-lt); margin-bottom:1rem; }
-  .om-pills { display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:2rem; }
-  .pill { font-family:'Fredoka One',cursive; font-size:0.8rem; padding:0.35rem 1rem; border:2px solid var(--brown); border-radius:100px; color:var(--brown); background:var(--cream); transition:all 0.2s; cursor:none; }
-  .pill:hover { background:var(--orange); color:var(--cream); border-color:var(--orange); }
+  .om-img-frame { position:relative; }
+  .om-img-frame::before { content:''; position:absolute; top:-12px; left:-12px; right:12px; bottom:12px; border:1.5px solid var(--brown); z-index:0; }
+  .om-img-frame img { position:relative; z-index:1; width:100%; aspect-ratio:3/4; object-fit:cover; }
 
+  .om-tag { position:absolute; bottom:-1.5rem; right:-1.5rem; z-index:2; background:var(--orange); padding:1.2rem 1.8rem; font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; color:var(--cream); line-height:1.5; max-width:200px; }
+
+  .om-text p { color:var(--brown-lt); font-size:1rem; margin-bottom:1.2rem; }
+
+  .om-tags { display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:2.5rem; }
+  .tag { font-family:'Nunito',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; padding:0.4rem 1.1rem; border:1.5px solid rgba(59,39,20,0.25); color:var(--brown-lt); cursor:none; transition:all 0.25s; }
+  .tag:hover { border-color:var(--orange); color:var(--orange); }
+
+  /* ── PORTFOLIO ── */
   #portfolio { background:var(--cream); }
-  .portfolio-filter { display:flex; gap:0.7rem; margin-bottom:3rem; flex-wrap:wrap; }
-  .filter-btn { font-family:'Fredoka One',cursive; font-size:0.85rem; padding:0.4rem 1.2rem; border:2px solid var(--brown); border-radius:100px; background:transparent; color:var(--brown); cursor:none; transition:all 0.2s; }
-  .filter-btn.active, .filter-btn:hover { background:var(--brown); color:var(--cream); }
-  .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-  .portfolio-card { border:2.5px solid var(--brown); border-radius:16px; overflow:hidden; background:var(--sand); transition:transform 0.25s, box-shadow 0.25s; cursor:none; }
-  .portfolio-card:hover { transform:translate(-4px,-4px); box-shadow:6px 6px 0 var(--brown); }
-  .card-img { aspect-ratio:4/5; position:relative; overflow:hidden; }
-  .card-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-  .portfolio-card:hover .card-img img { transform:scale(1.05); }
-  .card-body { padding:1rem 1.2rem; border-top:2px solid var(--brown); }
-  .card-title { font-family:'Fredoka One',cursive; font-size:1.05rem; color:var(--brown); }
-  .card-meta { font-size:0.78rem; color:var(--brown-lt); font-style:italic; }
-  .card-tag { display:inline-block; margin-top:0.5rem; font-family:'Fredoka One',cursive; font-size:0.7rem; padding:0.15rem 0.7rem; background:var(--orange); color:var(--cream); border-radius:100px; border:1.5px solid var(--brown); }
-  .card-desc { font-size:0.85rem; color:var(--brown-lt); font-style:italic; margin-top:0.6rem; line-height:1.5; }
-  .card-read-more { display:inline-flex; align-items:center; gap:0.4rem; margin-top:0.8rem; font-family:'Fredoka One',cursive; font-size:0.78rem; color:var(--orange); background:none; border:none; cursor:none; padding:0; transition:gap 0.2s; }
-  .card-read-more:hover { gap:0.7rem; }
 
-  .modal-backdrop { position:fixed; inset:0; z-index:800; background:rgba(59,39,20,0.7); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+  .portfolio-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3.5rem; flex-wrap:wrap; gap:1.5rem; }
+
+  .filter-row { display:flex; gap:0; }
+  .filter-btn { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.6rem 1.4rem; border:1.5px solid rgba(59,39,20,0.25); border-right:none; background:transparent; color:var(--brown-lt); cursor:none; transition:all 0.25s; }
+  .filter-btn:last-child { border-right:1.5px solid rgba(59,39,20,0.25); }
+  .filter-btn.active, .filter-btn:hover { background:var(--brown); border-color:var(--brown); color:var(--cream); }
+
+  .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+
+  .portfolio-card { position:relative; overflow:hidden; aspect-ratio:3/4; cursor:none; }
+  .portfolio-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+  .portfolio-card:hover img { transform:scale(1.05); }
+
+  .card-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(59,39,20,0.88) 0%, rgba(59,39,20,0.1) 50%, transparent 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:2rem; opacity:0; transition:opacity 0.4s; }
+  .portfolio-card:hover .card-overlay { opacity:1; }
+
+  .card-cat { font-family:'Nunito',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange-lt); margin-bottom:0.4rem; }
+  .card-title-ov { font-family:'Playfair Display',serif; font-style:italic; font-size:1.4rem; color:var(--cream); margin-bottom:0.2rem; }
+  .card-meta-ov { font-family:'Cormorant Garamond',serif; font-size:0.88rem; color:rgba(237,232,220,0.6); }
+
+  .card-strip { position:absolute; bottom:0; left:0; right:0; padding:1rem 1.5rem; background:linear-gradient(to top, rgba(59,39,20,0.7), transparent); }
+  .card-strip-title { font-family:'Playfair Display',serif; font-style:italic; font-size:1rem; color:var(--cream); }
+
+  /* ── MODAL ── */
+  .modal-backdrop { position:fixed; inset:0; z-index:800; background:rgba(26,16,8,0.85); display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity 0.4s; backdrop-filter:blur(4px); }
   .modal-backdrop.open { opacity:1; pointer-events:all; }
-  .modal { background:var(--sand); border:2.5px solid var(--brown); border-radius:20px; max-width:600px; width:100%; box-shadow:8px 8px 0 var(--brown); transform:translateY(20px) scale(0.97); transition:transform 0.3s; overflow:hidden; max-height:90vh; display:flex; flex-direction:column; }
-  .modal-backdrop.open .modal { transform:translateY(0) scale(1); }
-  .modal-img { aspect-ratio:4/3; width:100%; flex-shrink:0; overflow:hidden; }
+  .modal { background:var(--sand); max-width:680px; width:100%; transform:translateY(16px); transition:transform 0.4s; overflow:hidden; max-height:90vh; display:flex; flex-direction:column; position:relative; }
+  .modal-backdrop.open .modal { transform:translateY(0); }
+  .modal-img { aspect-ratio:16/9; width:100%; flex-shrink:0; overflow:hidden; }
   .modal-img img { width:100%; height:100%; object-fit:cover; }
-  .modal-body { padding:1.8rem 2rem; overflow-y:auto; }
-  .modal-tag { display:inline-block; font-family:'Fredoka One',cursive; font-size:0.7rem; padding:0.15rem 0.8rem; background:var(--orange); color:var(--cream); border-radius:100px; border:1.5px solid var(--brown); margin-bottom:0.8rem; }
-  .modal-title { font-family:'Fredoka One',cursive; font-size:1.6rem; color:var(--brown); margin-bottom:0.3rem; }
-  .modal-meta { font-size:0.82rem; color:var(--brown-lt); font-style:italic; margin-bottom:1.2rem; }
-  .modal-desc { font-size:0.95rem; color:var(--brown-lt); line-height:1.75; }
-  .modal-close { position:absolute; top:1rem; right:1rem; width:36px; height:36px; background:var(--brown); color:var(--cream); border:none; border-radius:50%; font-size:1.1rem; cursor:none; display:flex; align-items:center; justify-content:center; transition:background 0.2s; z-index:10; }
+  .modal-body { padding:2.5rem; overflow-y:auto; }
+  .modal-cat { font-family:'Nunito',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:0.6rem; }
+  .modal-title { font-family:'Playfair Display',serif; font-style:italic; font-size:2rem; color:var(--brown); margin-bottom:0.3rem; }
+  .modal-meta { font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:var(--ash); margin-bottom:1.5rem; }
+  .modal-desc { font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--brown-lt); line-height:1.9; font-style:italic; }
+  .modal-close { position:absolute; top:1rem; right:1rem; background:var(--brown); border:none; color:var(--cream); width:36px; height:36px; font-size:0.9rem; cursor:none; display:flex; align-items:center; justify-content:center; transition:background 0.2s; z-index:10; }
   .modal-close:hover { background:var(--orange); }
-  .modal-wrap { position:relative; }
 
-  #shop { background:var(--sand); border-top:2.5px solid var(--brown); border-bottom:2.5px solid var(--brown); }
-  .shop-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-  .shop-card { border:2.5px solid var(--brown); border-radius:16px; overflow:hidden; background:var(--cream); transition:transform 0.25s, box-shadow 0.25s; cursor:none; }
-  .shop-card:hover { transform:translate(-4px,-4px); box-shadow:6px 6px 0 var(--brown); }
-  .shop-card .card-img { aspect-ratio:4/5; overflow:hidden; }
-  .shop-card .card-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-  .shop-card:hover .card-img img { transform:scale(1.05); }
+  /* ── SHOP CTA ── */
+  #shop-cta {
+    background:var(--brown);
+    padding:7rem 4rem;
+    text-align:center;
+  }
+  #shop-cta .section-label { justify-content:center; color:var(--orange-lt); }
+  #shop-cta .section-label::before { background:var(--orange-lt); }
+  #shop-cta h2.sh { color:var(--cream); }
+  #shop-cta h2.sh em { color:var(--orange-lt); }
+  #shop-cta p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:rgba(237,232,220,0.65); max-width:480px; margin:0 auto 3rem; }
+  .btn-shop { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; padding:1rem 3rem; background:var(--orange); color:var(--cream); border:2px solid var(--orange); text-decoration:none; cursor:none; transition:all 0.3s; display:inline-block; }
+  .btn-shop:hover { background:transparent; color:var(--orange-lt); border-color:var(--orange-lt); }
+  .shop-coming { font-family:'Nunito',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(237,232,220,0.3); margin-top:1.5rem; }
 
-  #kalender { background:var(--brown); border-top:2.5px solid var(--brown); }
-  #kalender .section-tag { background:var(--orange); color:var(--cream); }
-  #kalender h2.section-heading { color:var(--cream); }
-  #kalender h2.section-heading span { color:var(--orange-lt); }
-  .kal-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:5rem; align-items:start; }
-  .kal-intro p { color:rgba(237,232,220,0.65); }
-  .kal-deco { margin-top:3rem; width:120px; height:120px; border:3px solid rgba(255,255,255,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; }
-  .kal-deco img { width:80px; height:80px; border-radius:50%; opacity:0.4; }
-  .exhibitions { display:flex; flex-direction:column; }
-  .exh { display:grid; grid-template-columns:70px 1fr; gap:2rem; padding:2rem 0; border-bottom:1.5px solid rgba(255,255,255,0.08); align-items:start; transition:all 0.25s; cursor:none; }
-  .exh:first-child { border-top:1.5px solid rgba(255,255,255,0.08); }
+  /* ── KALENDER ── */
+  #kalender { background:var(--sand); }
+
+  .kal-grid { display:grid; grid-template-columns:1fr 2fr; gap:7rem; align-items:start; }
+  .kal-intro p { color:var(--brown-lt); font-style:italic; font-size:1rem; }
+  .kal-logo { margin-top:3rem; width:80px; height:80px; border-radius:50%; overflow:hidden; border:2px solid rgba(59,39,20,0.2); opacity:0.6; }
+  .kal-logo img { width:100%; height:100%; object-fit:cover; }
+
+  .exhibitions { border-top:1px solid rgba(59,39,20,0.12); }
+  .exh { display:grid; grid-template-columns:80px 1fr; gap:2.5rem; padding:2.2rem 0; border-bottom:1px solid rgba(59,39,20,0.1); transition:padding-left 0.3s; cursor:none; }
   .exh:hover { padding-left:0.5rem; }
-  .exh-date { text-align:center; }
-  .exh-day { font-family:'Fredoka One',cursive; font-size:2.2rem; color:var(--orange-lt); line-height:1; }
-  .exh-month { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(237,232,220,0.45); }
-  .exh-title { font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--cream); }
-  .exh-venue { font-family:'Nunito',sans-serif; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange-lt); margin:0.25rem 0; }
-  .exh-desc { font-size:0.88rem; color:rgba(237,232,220,0.55); font-style:italic; }
-  .exh-badge { display:inline-block; margin-top:0.5rem; font-family:'Fredoka One',cursive; font-size:0.7rem; padding:0.2rem 0.8rem; border-radius:100px; border:1.5px solid; }
-  .badge-solo { color:var(--orange-lt); border-color:var(--orange-lt); }
-  .badge-group { color:rgba(237,232,220,0.5); border-color:rgba(237,232,220,0.2); }
-  .badge-plan { color:#C4A040; border-color:#C4A040; }
-  .tidigare-wrap { margin-top:4rem; }
-  .tidigare-toggle { display:flex; align-items:center; gap:1rem; background:none; border:none; cursor:none; font-family:'Fredoka One',cursive; font-size:0.9rem; letter-spacing:0.06em; text-transform:uppercase; color:rgba(237,232,220,0.45); padding:0; width:100%; border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem; transition:color 0.2s; }
-  .tidigare-toggle:hover { color:rgba(237,232,220,0.75); }
-  .tidigare-toggle-arrow { margin-left:auto; font-size:1rem; transition:transform 0.3s; }
+  .exh-day { font-family:'Playfair Display',serif; font-style:italic; font-size:2.2rem; color:var(--orange); line-height:1; }
+  .exh-month { font-family:'Nunito',sans-serif; font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--ash); margin-top:0.2rem; }
+  .exh-title { font-family:'Playfair Display',serif; font-style:italic; font-size:1.15rem; color:var(--brown); margin-bottom:0.2rem; }
+  .exh-venue { font-family:'Nunito',sans-serif; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); margin-bottom:0.4rem; }
+  .exh-desc { font-family:'Cormorant Garamond',serif; font-size:0.95rem; color:var(--ash); font-style:italic; }
+  .exh-badge { display:inline-block; margin-top:0.6rem; font-family:'Nunito',sans-serif; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.2rem 0.8rem; border:1px solid; }
+  .badge-solo { color:var(--orange); border-color:rgba(196,98,45,0.35); }
+  .badge-group { color:var(--ash); border-color:rgba(155,143,130,0.3); }
+  .badge-plan { color:#a08840; border-color:rgba(160,136,64,0.3); }
+
+  .tidigare-wrap { margin-top:3rem; }
+  .tidigare-toggle { background:none; border:none; border-top:1px solid rgba(59,39,20,0.12); padding-top:1.5rem; width:100%; text-align:left; cursor:none; font-family:'Nunito',sans-serif; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--ash); display:flex; justify-content:space-between; transition:color 0.3s; }
+  .tidigare-toggle:hover { color:var(--brown); }
+  .tidigare-toggle-arrow { transition:transform 0.3s; }
   .tidigare-toggle.open .tidigare-toggle-arrow { transform:rotate(180deg); }
-  .tidigare-list { display:none; flex-direction:column; margin-top:0.5rem; }
-  .tidigare-list.open { display:flex; }
-  .exh-past { display:grid; grid-template-columns:70px 1fr; gap:2rem; padding:1.5rem 0; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start; opacity:0.55; transition:opacity 0.2s; }
-  .exh-past:hover { opacity:0.85; }
-  .exh-past .exh-day { font-size:1.6rem; color:rgba(232,149,74,0.6); }
-  .exh-past .exh-title { font-size:0.95rem; color:rgba(237,232,220,0.8); }
-  .exh-past .exh-venue { font-size:0.72rem; color:rgba(232,149,74,0.5); }
+  .tidigare-list { display:none; }
+  .tidigare-list.open { display:block; }
+  .exh-past { display:grid; grid-template-columns:80px 1fr; gap:2.5rem; padding:1.4rem 0; border-bottom:1px solid rgba(59,39,20,0.06); opacity:0.45; transition:opacity 0.2s; }
+  .exh-past:hover { opacity:0.75; }
+  .exh-past .exh-day { font-size:1.4rem; }
+  .exh-past .exh-title { font-size:0.92rem; }
 
+  /* ── KONTAKT ── */
   #kontakt { background:var(--cream); }
-  .kontakt-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:5rem; align-items:start; }
-  .kontakt-info p { color:var(--brown-lt); margin-bottom:2rem; }
-  .info-blocks { display:flex; flex-direction:column; gap:0; }
-  .info-row { padding:1rem 0; border-bottom:2px solid rgba(59,39,20,0.1); display:flex; flex-direction:column; }
-  .info-label { font-family:'Fredoka One',cursive; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange); }
-  .info-val { font-size:0.95rem; color:var(--brown); }
-  .contact-form { display:flex; flex-direction:column; gap:1.5rem; }
-  .form-group { display:flex; flex-direction:column; gap:0.4rem; }
-  .form-label { font-family:'Fredoka One',cursive; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brown); }
-  .form-input, .form-textarea { background:var(--sand); border:2px solid var(--brown); border-radius:10px; padding:0.75rem 1rem; font-family:'Nunito',sans-serif; font-size:0.95rem; color:var(--brown); outline:none; transition:border-color 0.2s, box-shadow 0.2s; cursor:none; }
-  .form-input:focus, .form-textarea:focus { border-color:var(--orange); box-shadow:3px 3px 0 var(--orange); }
-  .form-input::placeholder, .form-textarea::placeholder { color:rgba(59,39,20,0.3); font-style:italic; }
-  .form-textarea { resize:none; min-height:130px; }
-  .form-footer { display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
-  .btn-send { font-family:'Fredoka One',cursive; font-size:1rem; letter-spacing:0.04em; padding:0.85rem 2.5rem; background:var(--orange); color:var(--cream); border:2.5px solid var(--brown); border-radius:100px; cursor:none; transition:all 0.25s; box-shadow:4px 4px 0 var(--brown); }
-  .btn-send:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--brown); background:var(--brown); }
-  .form-note { font-size:0.78rem; color:var(--brown-lt); font-style:italic; }
-  .form-success { display:none; background:var(--sand); border:2.5px solid var(--orange); border-radius:16px; padding:2rem; text-align:center; font-family:'Fredoka One',cursive; font-size:1.2rem; color:var(--brown); box-shadow:4px 4px 0 var(--brown); }
 
-  footer { background:var(--brown); border-top:2.5px solid var(--brown); padding:2.5rem 3rem; display:flex; justify-content:space-between; align-items:center; color:rgba(237,232,220,0.5); flex-wrap:wrap; gap:1rem; }
-  .footer-brand { display:flex; align-items:center; gap:0.7rem; }
-  .footer-brand img { width:36px; height:36px; border-radius:50%; border:2px solid rgba(237,232,220,0.2); }
-  .footer-brand-name { font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--cream); }
-  .footer-copy { font-family:'Nunito',sans-serif; font-size:0.72rem; letter-spacing:0.1em; }
-  .footer-links { display:flex; gap:1.5rem; }
-  .footer-links a { font-family:'Nunito',sans-serif; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(237,232,220,0.4); text-decoration:none; transition:color 0.2s; }
+  .kontakt-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:7rem; }
+  .kontakt-info p { color:var(--brown-lt); font-style:italic; font-size:1rem; margin-bottom:2.5rem; }
+  .info-blocks { }
+  .info-row { padding:1.1rem 0; border-bottom:1px solid rgba(59,39,20,0.1); display:flex; justify-content:space-between; align-items:baseline; }
+  .info-label { font-family:'Nunito',sans-serif; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--ash); }
+  .info-val { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--brown); font-style:italic; }
+
+  .contact-form { display:flex; flex-direction:column; gap:1.8rem; }
+  .form-group { display:flex; flex-direction:column; gap:0.5rem; }
+  .form-label { font-family:'Nunito',sans-serif; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--ash); }
+  .form-input, .form-textarea { background:transparent; border:none; border-bottom:1.5px solid rgba(59,39,20,0.2); padding:0.7rem 0; font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--brown); outline:none; transition:border-color 0.3s; cursor:none; font-style:italic; }
+  .form-input:focus, .form-textarea:focus { border-bottom-color:var(--orange); }
+  .form-input::placeholder, .form-textarea::placeholder { color:rgba(59,39,20,0.3); }
+  .form-textarea { resize:none; min-height:110px; }
+  .form-footer { display:flex; align-items:center; gap:2rem; margin-top:0.5rem; flex-wrap:wrap; }
+  .btn-send { font-family:'Nunito',sans-serif; font-weight:600; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; padding:0.9rem 2.5rem; background:var(--brown); color:var(--cream); border:2px solid var(--brown); cursor:none; transition:all 0.3s; }
+  .btn-send:hover { background:var(--orange); border-color:var(--orange); }
+  .form-note { font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:var(--ash); font-style:italic; }
+  .form-success { display:none; font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; color:var(--orange); padding:3rem 0; }
+
+  /* ── FOOTER ── */
+  footer { background:var(--brown); padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
+  .footer-brand { display:flex; align-items:center; gap:0.8rem; }
+  .footer-brand img { width:34px; height:34px; border-radius:50%; border:1.5px solid rgba(237,232,220,0.2); opacity:0.8; }
+  .footer-brand-name { font-family:'Playfair Display',serif; font-style:italic; font-size:1rem; color:var(--cream); }
+  .footer-copy { font-family:'Nunito',sans-serif; font-size:0.6rem; letter-spacing:0.15em; color:rgba(237,232,220,0.35); }
+  .footer-links { display:flex; gap:2rem; }
+  .footer-links a { font-family:'Nunito',sans-serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(237,232,220,0.4); text-decoration:none; transition:color 0.3s; }
   .footer-links a:hover { color:var(--orange-lt); }
 
-  @keyframes popIn { from{opacity:0;transform:scale(0.6);} to{opacity:1;transform:scale(1);} }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
-  @keyframes morph { 0%,100%{border-radius:40% 60% 60% 40%/40% 40% 60% 60%;} 50%{border-radius:60% 40% 40% 60%/60% 60% 40% 40%;} }
-  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(-8px);} }
-  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  /* ── ANIMATIONS ── */
+  .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.9s ease, transform 0.9s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(-8px);} }
 
-  @media(max-width:860px){
-    nav { padding:1rem 1.5rem; }
-    .nav-links { display:none; }
-    .om-grid,.kal-grid,.kontakt-grid { grid-template-columns:1fr; gap:3rem; }
-    .portfolio-grid, .shop-grid { grid-template-columns:1fr 1fr; }
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    nav { padding:1.2rem 1.5rem 1rem; }
+    .nav-links { gap:1.5rem; }
+    .om-grid, .kal-grid, .kontakt-grid { grid-template-columns:1fr; gap:4rem; }
+    .portfolio-grid { grid-template-columns:1fr 1fr; }
     .section-inner { padding:0 1.5rem; }
-    footer { flex-direction:column; text-align:center; }
+    footer { padding:2rem 1.5rem; flex-direction:column; text-align:center; }
+    .quote-strip { padding:3rem 2rem; }
+    #shop-cta { padding:5rem 2rem; }
   }
 </style>
 </head>
@@ -197,13 +277,13 @@
 <!-- NAV -->
 <nav>
   <a href="#hem" class="nav-logo">
-    <img src="artbyows.jpg" alt="artbyows logo">
+    <img src="artbyows.jpg" alt="artbyows">
     <span class="nav-logo-text">artbyows</span>
   </a>
   <ul class="nav-links">
     <li><a href="#om">Om mig</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#shop">Shop</a></li>
+    <li><a href="#portfolio">Verk</a></li>
+    <li><a href="#shop-cta">Shop</a></li>
     <li><a href="#kalender">Utställningar</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
@@ -214,43 +294,48 @@
   <div class="hero-deco">
     <div class="deco-circle"></div>
     <div class="deco-circle"></div>
-    <div class="deco-circle"></div>
   </div>
-  <div class="hero-logo-wrap">
-    <img src="artbyows.jpg" alt="artbyows">
-  </div>
-  <h1 class="hero-title">art<span>by</span>ows</h1>
+  <div class="hero-eyebrow">Oskar Svenbland — Konstnär</div>
+  <h1 class="hero-title">art<span>by</span><br>OwS</h1>
   <p class="hero-sub">Konst om det vi lever i och bär inom oss.</p>
   <div class="hero-cta">
-    <a href="#portfolio" class="btn-primary">Se mina verk</a>
+    <a href="#portfolio" class="btn-primary">Se verken</a>
     <a href="#kontakt" class="btn-outline">Kontakta mig</a>
   </div>
-  <div class="hero-scroll-hint"><span>↓</span><span>scrolla</span></div>
+  <div class="hero-scroll">Scrolla</div>
 </section>
+
+<!-- QUOTE STRIP -->
+<div class="quote-strip">
+  <blockquote>
+    "Jag ser spår av liv, tid och berättelser i det som andra lämnat bakom sig."
+    <cite>— Oskar Svenbland / OwS</cite>
+  </blockquote>
+</div>
 
 <!-- OM MIG -->
 <section id="om">
   <div class="section-inner">
     <div class="om-grid">
       <div class="om-img-wrap reveal">
-        <div class="om-img">
+        <div class="om-img-frame">
           <img src="OwS.jpg" alt="Oskar Svenbland">
+          <div class="om-tag">Baserad i Klippans kommun</div>
         </div>
-        <div class="om-img-sticker">Baserad i<br>Sverige</div>
       </div>
-      <div class="om-text reveal">
-        <div class="section-tag">Om mig</div>
-        <h2 class="section-heading">Hej, jag är<br><span>OwS</span></h2>
-        <p>Jag heter Oskar Svenbland och arbetar konstnärligt under namnet OwS. Bor i Klippans kommun men har varit verksam på olika utställningar runtom i Sverige.</p>
+      <div class="reveal">
+        <div class="section-label">Om konstnären</div>
+        <h2 class="sh">Oskar<br><em>Svenbland</em></h2>
+        <p>Jag heter Oskar Svenbland och arbetar konstnärligt under namnet OwS. Bor i Klippans kommun men har varit verksam på utställningar runtom i Sverige.</p>
         <p>Mina verk är ett sätt att bearbeta tankar, känslor och tillstånd – men också ett försök att skapa igenkänning hos betraktaren. Jag vill att konsten ska väcka något: en känsla, en fråga, ett minne eller en eftertanke. Det finns inget facit i mina verk, utan utrymme för tolkning och personliga upplevelser.</p>
-        <p>Återbruk är en viktig del av mitt konstnärskap. Jag använder gärna material som andra har lämnat bakom sig – sådant som betraktas som skräp, förbrukat eller värdelöst. I dessa material ser jag spår av liv, tid och berättelser.</p>
-        <p>Jag arbetar med flera olika tekniker och uttryckssätt. För mig är skapandet en lekfull och utforskande process där jag tillåter mig själv att prova, misslyckas, förändra och lära.</p>
-        <div class="om-pills">
-          <span class="pill">Återbruk</span>
-          <span class="pill">Mixed media</span>
-          <span class="pill">Originalverk</span>
-          <span class="pill">Prints</span>
-          <span class="pill">Beställningar</span>
+        <p>Återbruk är en viktig del av mitt konstnärskap. Jag använder gärna material som andra lämnat bakom sig – sådant som betraktas som skräp, förbrukat eller värdelöst. I dessa material ser jag spår av liv, tid och berättelser. Det finns en stark symbolik i att skapa något vackert av det som har övergetts.</p>
+        <p>Mitt konstnärliga arbete är en pågående process där jag ständigt söker nya sätt att uttrycka det mänskliga, det sårbara och det levande.</p>
+        <div class="om-tags">
+          <span class="tag">Återbruk</span>
+          <span class="tag">Mixed media</span>
+          <span class="tag">Originalverk</span>
+          <span class="tag">Beställningar</span>
+          <span class="tag">Klippan</span>
         </div>
       </div>
     </div>
@@ -260,70 +345,48 @@
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-inner">
-    <div class="reveal">
-      <div class="section-tag">Portfolio</div>
-      <h2 class="section-heading">Utvalda <span>verk</span></h2>
+    <div class="portfolio-header reveal">
+      <div>
+        <div class="section-label">Utvalda verk</div>
+        <h2 class="sh" style="margin-bottom:0;">Portfolio</h2>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" onclick="filterPortfolio('alla',this)">Alla</button>
+        <button class="filter-btn" onclick="filterPortfolio('original',this)">Originalverk</button>
+        <button class="filter-btn" onclick="filterPortfolio('lampa',this)">Lampor</button>
+      </div>
     </div>
-    <div class="portfolio-filter reveal">
-      <button class="filter-btn active" onclick="filterPortfolio('alla',this)">Alla</button>
-      <button class="filter-btn" onclick="filterPortfolio('original',this)">Originalverk</button>
-      <button class="filter-btn" onclick="filterPortfolio('lampa',this)">Lampor</button>
-    </div>
+
     <div class="portfolio-grid" id="portfolioGrid">
 
-      <div class="portfolio-card reveal" data-cat="original" onclick="openModal('Movement','Originalverk','Mixed media · 80×80 cm','movement.jpg','En blå rörelse skär genom det tunga landskapet. Små båtar bär drömmar genom struktur, tyngd och tid. Några står kvar och ser på. Andra vågar färdas.')">
-        <div class="card-img"><img src="Movment.jpg" alt="Movement"></div>
-        <div class="card-body">
-          <div class="card-title">Movement</div>
-          <div class="card-meta">Mixed media · 80×80 cm</div>
-          <div class="card-desc">En blå rörelse skär genom det tunga landskapet. Små båtar bär drömmar genom struktur, tyngd och tid.</div>
-          <span class="card-tag">Originalverk</span><br>
-          <button class="card-read-more">Läs mer →</button>
-        </div>
+      <div class="portfolio-card reveal" data-cat="original" onclick="openModal('Movement','Originalverk','Mixed media · 80×80 cm','Movment.jpg','En blå rörelse skär genom det tunga landskapet. Små båtar bär drömmar genom struktur, tyngd och tid. Några står kvar och ser på. Andra vågar färdas.')">
+        <img src="Movment.jpg" alt="Movement">
+        <div class="card-overlay"><div class="card-cat">Originalverk</div><div class="card-title-ov">Movement</div><div class="card-meta-ov">Mixed media · 80×80 cm</div></div>
+        <div class="card-strip"><div class="card-strip-title">Movement</div></div>
       </div>
 
       <div class="portfolio-card reveal" data-cat="original" onclick="openModal('Omvärldsanalys','Originalverk','Mixed media','Omvärldsanalys.jpg','Världen bryts ned i fragment – teknik, konflikt, beroende, människa. Ögat ser allt. Förstår det något? Vi mäter, kartlägger och analyserar – ändå lever vi mitt i kaoset vi försöker förstå. Vad ser du när du tittar på världen just nu?')">
-        <div class="card-img"><img src="Omvärldsanalys.jpg" alt="Omvärldsanalys"></div>
-        <div class="card-body">
-          <div class="card-title">Omvärldsanalys</div>
-          <div class="card-meta">Mixed media</div>
-          <div class="card-desc">Världen bryts ned i fragment – teknik, konflikt, beroende, människa. Ögat ser allt. Förstår det något?</div>
-          <span class="card-tag">Originalverk</span><br>
-          <button class="card-read-more">Läs mer →</button>
-        </div>
+        <img src="Omvärldsanalys.jpg" alt="Omvärldsanalys">
+        <div class="card-overlay"><div class="card-cat">Originalverk</div><div class="card-title-ov">Omvärldsanalys</div><div class="card-meta-ov">Mixed media</div></div>
+        <div class="card-strip"><div class="card-strip-title">Omvärldsanalys</div></div>
       </div>
 
-      <div class="portfolio-card reveal" data-cat="original" onclick="openModal('Små liv i stora strukturer I','Originalverk','Mixed media · 80×95 cm','små liv i stora strukturer I.jpg','En rörelse genom lager av tid. En liten båt driver mellan fragment av minnen, strukturer och stilla observation. Ett ljus pulserar. Något växer. Något upplöses. De små figurerna bär på berättelser vi nästan kan nå, men aldrig helt förstå. De rör sig i ett landskap av återbruk – där det som en gång varit får en ny riktning. Allt är i förändring. Allt är i rörelse. Och någonstans där finns vi.')">
-        <div class="card-img"><img src="små liv i stora strukturer I.jpg" alt="Små liv i stora strukturer I"></div>
-        <div class="card-body">
-          <div class="card-title">Små liv i stora strukturer I</div>
-          <div class="card-meta">Mixed media · 80×95 cm</div>
-          <div class="card-desc">En rörelse genom lager av tid. Något växer. Något upplöses. Allt är i förändring.</div>
-          <span class="card-tag">Originalverk</span><br>
-          <button class="card-read-more">Läs mer →</button>
-        </div>
+      <div class="portfolio-card reveal" data-cat="original" onclick="openModal('Små liv i stora strukturer I','Originalverk','Mixed media · 80×95 cm','små liv i stora strukturer I.jpg','En rörelse genom lager av tid. En liten båt driver mellan fragment av minnen, strukturer och stilla observation. Ett ljus pulserar. Något växer. Något upplöses. De små figurerna bär på berättelser vi nästan kan nå, men aldrig helt förstå. Allt är i förändring. Allt är i rörelse. Och någonstans där finns vi.')">
+        <img src="små liv i stora strukturer I.jpg" alt="Små liv i stora strukturer I">
+        <div class="card-overlay"><div class="card-cat">Originalverk</div><div class="card-title-ov">Små liv i stora strukturer I</div><div class="card-meta-ov">Mixed media · 80×95 cm</div></div>
+        <div class="card-strip"><div class="card-strip-title">Små liv i stora strukturer I</div></div>
       </div>
 
-      <div class="portfolio-card reveal" data-cat="original" onclick="openModal('Metamorfos','Originalverk','Mixed media · 96×136×14 cm','Metamorfos.jpg','Metamorfos är sällan vacker i sin process. Den är kladdig, upplösande, ombildande. Det här är en bild av den fasen – den ofärdiga, mellan zonen, där jaget smälter och samtidigt växer. Färgerna blandas med det fysiska materialet som tränger ut ur ramen. Det nya tar plats, spränger sin form, söker nya kopplingar. Det här är kroppen/psyket/identiteten i transformation. Inte som en fjäril som är färdig – utan som allt det som sker innan.')">
-        <div class="card-img"><img src="Metamorfos.jpg" alt="Metamorfos"></div>
-        <div class="card-body">
-          <div class="card-title">Metamorfos</div>
-          <div class="card-meta">Mixed media · 96×136×14 cm</div>
-          <div class="card-desc">Kroppen, psyket och identiteten i transformation — inte som en fjäril som är färdig, utan som allt det som sker innan.</div>
-          <span class="card-tag">Originalverk</span><br>
-          <button class="card-read-more">Läs mer →</button>
-        </div>
+      <div class="portfolio-card reveal" data-cat="original" onclick="openModal('Metamorfos','Originalverk','Mixed media · 96×136×14 cm','Metamorfos.jpg','Metamorfos är sällan vacker i sin process. Den är kladdig, upplösande, ombildande. Det här är en bild av den fasen – den ofärdiga, mellanzonen, där jaget smälter och samtidigt växer. Färgerna blandas med det fysiska materialet som tränger ut ur ramen. Det nya tar plats, spränger sin form, söker nya kopplingar. Inte som en fjäril som är färdig – utan som allt det som sker innan.')">
+        <img src="Metamorfos.jpg" alt="Metamorfos">
+        <div class="card-overlay"><div class="card-cat">Originalverk</div><div class="card-title-ov">Metamorfos</div><div class="card-meta-ov">Mixed media · 96×136×14 cm</div></div>
+        <div class="card-strip"><div class="card-strip-title">Metamorfos</div></div>
       </div>
 
-      <div class="portfolio-card reveal" data-cat="lampa" onclick="openModal('Färgglad lampa','Lampa','Havsglas & återbruksmaterial · Unik','Färgglad lampa.webp','Skapad av havsglas och fragment av trasiga flaskor och vaser, noggrant insamlade och förvandlade till något lysande och vackert. När ljuset skiner genom glaset vaknar färgerna och texturerna till liv, vilket skapar ett mjukt och ständigt föränderligt sken. Inga två bitar är likadana, vilket gör denna lampa helt unik. En liten ljusskulptur, formad av både havet och mänskliga händer.')">
-        <div class="card-img"><img src="Färgglad lampa.webp" alt="Färgglad lampa"></div>
-        <div class="card-body">
-          <div class="card-title">Färgglad lampa</div>
-          <div class="card-meta">Havsglas & återbruksmaterial · Unik</div>
-          <div class="card-desc">Skapad av havsglas och fragment av trasiga flaskor. När ljuset skiner vaknar färgerna till liv — helt unik.</div>
-          <span class="card-tag">Lampa</span><br>
-          <button class="card-read-more">Läs mer →</button>
-        </div>
+      <div class="portfolio-card reveal" data-cat="lampa" onclick="openModal('Färgglad lampa','Lampa','Havsglas & återbruksmaterial · Unik','Färgglad lampa.webp','Skapad av havsglas och fragment av trasiga flaskor och vaser, noggrant insamlade och förvandlade till något lysande och vackert. När ljuset skiner genom glaset vaknar färgerna och texturerna till liv. Inga två bitar är likadana. En liten ljusskulptur, formad av både havet och mänskliga händer.')">
+        <img src="Färgglad lampa.webp" alt="Färgglad lampa">
+        <div class="card-overlay"><div class="card-cat">Lampa</div><div class="card-title-ov">Färgglad lampa</div><div class="card-meta-ov">Havsglas & återbruksmaterial</div></div>
+        <div class="card-strip"><div class="card-strip-title">Färgglad lampa</div></div>
       </div>
 
     </div>
@@ -332,11 +395,11 @@
 
 <!-- MODAL -->
 <div class="modal-backdrop" id="modalBackdrop" onclick="closeModalOutside(event)">
-  <div class="modal modal-wrap">
+  <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-img"><img id="modalImg" src="" alt=""></div>
     <div class="modal-body">
-      <span class="modal-tag" id="modalTag"></span>
+      <div class="modal-cat" id="modalTag"></div>
       <div class="modal-title" id="modalTitle"></div>
       <div class="modal-meta" id="modalMeta"></div>
       <div class="modal-desc" id="modalDesc"></div>
@@ -344,93 +407,15 @@
   </div>
 </div>
 
-<!-- SHOP -->
-<section id="shop">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-tag">Shop</div>
-      <h2 class="section-heading">Originalverk <span>&</span> Lampor</h2>
-      <p style="color:var(--brown-lt);max-width:560px;margin-bottom:2.5rem;">Alla verk är unika — skapade för hand med återbrukat material. Ser du något du gillar? Hör av dig så pratar vi vidare.</p>
-    </div>
-    <div class="portfolio-filter reveal">
-      <button class="filter-btn active" onclick="filterShop('alla',this)">Alla</button>
-      <button class="filter-btn" onclick="filterShop('original',this)">Originalverk</button>
-      <button class="filter-btn" onclick="filterShop('lampa',this)">Lampor</button>
-    </div>
-    <!-- ═══════════════════════════════════════════════════
-         SHOP — lägg till nya produkter här!
-         shopcat: "original" eller "lampa"
-         status: "tillgänglig" eller "såld"
-    ════════════════════════════════════════════════════ -->
-    <div class="shop-grid" id="shopGrid">
-
-      <div class="shop-card reveal" data-shopcat="original">
-        <div class="card-img"><img src="Movment.jpg" alt="Movement"></div>
-        <div class="card-body">
-          <div class="card-title">Movement</div>
-          <div class="card-meta">Mixed media · 80×80 cm</div>
-          <span class="card-tag">Originalverk</span>
-          <div style="margin-top:0.8rem;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--brown);">Pris på förfrågan</span>
-            <button class="btn-send" style="font-size:0.8rem;padding:0.5rem 1.2rem;" onclick="shopContact('Movement')">Kontakta</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="shop-card reveal" data-shopcat="original">
-        <div class="card-img"><img src="Omvärldsanalys.jpg" alt="Omvärldsanalys"></div>
-        <div class="card-body">
-          <div class="card-title">Omvärldsanalys</div>
-          <div class="card-meta">Mixed media</div>
-          <span class="card-tag">Originalverk</span>
-          <div style="margin-top:0.8rem;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--brown);">Pris på förfrågan</span>
-            <button class="btn-send" style="font-size:0.8rem;padding:0.5rem 1.2rem;" onclick="shopContact('Omvärldsanalys')">Kontakta</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="shop-card reveal" data-shopcat="original">
-        <div class="card-img"><img src="små liv i stora strukturer I.jpg" alt="Små liv i stora strukturer I"></div>
-        <div class="card-body">
-          <div class="card-title">Små liv i stora strukturer I</div>
-          <div class="card-meta">Mixed media · 80×95 cm</div>
-          <span class="card-tag">Originalverk</span>
-          <div style="margin-top:0.8rem;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--brown);">Pris på förfrågan</span>
-            <button class="btn-send" style="font-size:0.8rem;padding:0.5rem 1.2rem;" onclick="shopContact('Små liv i stora strukturer I')">Kontakta</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="shop-card reveal" data-shopcat="original">
-        <div class="card-img"><img src="Metamorfos.jpg" alt="Metamorfos"></div>
-        <div class="card-body">
-          <div class="card-title">Metamorfos</div>
-          <div class="card-meta">Mixed media · 96×136×14 cm</div>
-          <span class="card-tag">Originalverk</span>
-          <div style="margin-top:0.8rem;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--brown);">Pris på förfrågan</span>
-            <button class="btn-send" style="font-size:0.8rem;padding:0.5rem 1.2rem;" onclick="shopContact('Metamorfos')">Kontakta</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="shop-card reveal" data-shopcat="lampa">
-        <div class="card-img"><img src="Färgglad lampa.webp" alt="Färgglad lampa"></div>
-        <div class="card-body">
-          <div class="card-title">Färgglad lampa</div>
-          <div class="card-meta">Havsglas & återbruksmaterial · Unik</div>
-          <span class="card-tag">Lampa</span>
-          <div style="margin-top:0.8rem;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--brown);">Pris på förfrågan</span>
-            <button class="btn-send" style="font-size:0.8rem;padding:0.5rem 1.2rem;" onclick="shopContact('Färgglad lampa')">Kontakta</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <p class="reveal" style="margin-top:3rem;text-align:center;font-style:italic;color:var(--brown-lt);font-size:0.9rem;">Alla verk är unika och prissätts individuellt. Kontakta mig via formuläret nedan eller på <strong>ArtbyOws@gmail.com</strong></p>
+<!-- SHOP CTA -->
+<section id="shop-cta">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label reveal">Shop</div>
+    <h2 class="sh reveal">Köp ett <em>verk</em></h2>
+    <p class="reveal">Alla verk är unika — skapade för hand med återbrukat material. Shoppen öppnar snart.</p>
+    <!-- Byt ut href="#" mot din Shopify-länk när den är klar -->
+    <a href="#" class="btn-shop reveal">Besök shoppen</a>
+    <div class="shop-coming reveal">Shopify-butik — kommer snart</div>
   </div>
 </section>
 
@@ -438,18 +423,21 @@
 <section id="kalender">
   <div class="section-inner">
     <div class="kal-grid">
-      <div class="kal-intro reveal">
-        <div class="section-tag">Kalender</div>
-        <h2 class="section-heading">Kommande<br><span>utställningar</span></h2>
-        <p>Aktuella event, mässor och popups. Kom och säg hej!</p>
-        <div class="kal-deco"><img src="artbyows.jpg" alt=""></div>
+      <div class="reveal">
+        <div class="section-label">Kalender</div>
+        <h2 class="sh">Kommande<br><em>utställningar</em></h2>
+        <p>Aktuella event, mässor och popups.<br>Kom och säg hej.</p>
+        <div class="kal-logo"><img src="artbyows.jpg" alt=""></div>
       </div>
       <div class="reveal">
+        <!-- ═══════════════════════════════════════════════
+             KOMMANDE — lägg till nya här!
+             typ: "solo" | "group" | "popup" | "plan"
+        ════════════════════════════════════════════════ -->
         <div class="exhibitions" id="kommandeList"></div>
         <div class="tidigare-wrap">
           <button class="tidigare-toggle" id="tidigareToggle" onclick="toggleTidigare()">
-            ✦ Tidigare utställningar
-            <span class="tidigare-toggle-arrow">↓</span>
+            Tidigare utställningar <span class="tidigare-toggle-arrow">↓</span>
           </button>
           <div class="tidigare-list" id="tidigareList">
             <div class="exh-past"><div class="exh-date"><div class="exh-day">2026</div></div><div><div class="exh-title">Galleri70</div><div class="exh-venue">Halmstad</div></div></div>
@@ -494,41 +482,29 @@
   <div class="section-inner">
     <div class="kontakt-grid">
       <div class="reveal">
-        <div class="section-tag">Kontakt</div>
-        <h2 class="section-heading">Låt oss<br><span>skapa</span> något</h2>
-        <p>Beställningar, samarbeten, frågor om verk — hör av dig!</p>
+        <div class="section-label">Kontakt</div>
+        <h2 class="sh">Låt oss<br><em>prata</em></h2>
+        <p class="kontakt-info">Beställningar, samarbeten, frågor om verk — hör av dig.</p>
         <div class="info-blocks">
           <div class="info-row"><span class="info-label">E-post</span><span class="info-val">ArtbyOws@gmail.com</span></div>
           <div class="info-row"><span class="info-label">Telefon</span><span class="info-val">076-183 83 35</span></div>
           <div class="info-row"><span class="info-label">Instagram</span><span class="info-val">@ArtbyOws</span></div>
-          <div class="info-row"><span class="info-label">Baserad i</span><span class="info-val">Klippans kommun, Sverige</span></div>
+          <div class="info-row"><span class="info-label">Baserad i</span><span class="info-val">Klippans kommun</span></div>
           <div class="info-row"><span class="info-label">Svarstid</span><span class="info-val">Inom 2–3 dagar</span></div>
         </div>
       </div>
       <div class="reveal">
         <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
-          <div class="form-group">
-            <label class="form-label">Ditt namn</label>
-            <input class="form-input" type="text" placeholder="Förnamn Efternamn" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">E-post</label>
-            <input class="form-input" type="email" placeholder="din@epost.se" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Typ av förfrågan</label>
-            <input class="form-input" id="inquiryType" type="text" placeholder="t.ex. Beställning, Samarbete, Köp av verk...">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Meddelande</label>
-            <textarea class="form-textarea" placeholder="Berätta mer..." required></textarea>
-          </div>
+          <div class="form-group"><label class="form-label">Namn</label><input class="form-input" type="text" placeholder="Ditt namn" required></div>
+          <div class="form-group"><label class="form-label">E-post</label><input class="form-input" type="email" placeholder="din@epost.se" required></div>
+          <div class="form-group"><label class="form-label">Ärende</label><input class="form-input" id="inquiryType" type="text" placeholder="Beställning, samarbete, köp av verk..."></div>
+          <div class="form-group"><label class="form-label">Meddelande</label><textarea class="form-textarea" placeholder="Berätta mer..." required></textarea></div>
           <div class="form-footer">
-            <button class="btn-send" type="submit">Skicka ✦</button>
+            <button class="btn-send" type="submit">Skicka</button>
             <span class="form-note">Svarar inom 2–3 dagar</span>
           </div>
         </form>
-        <div class="form-success" id="formSuccess">✦ Tack! Jag hör av mig snart ✦</div>
+        <div class="form-success" id="formSuccess">Tack — jag hör av mig snart.</div>
       </div>
     </div>
   </div>
@@ -540,10 +516,10 @@
     <img src="artbyows.jpg" alt="artbyows">
     <span class="footer-brand-name">artbyows</span>
   </div>
-  <div class="footer-copy">© 2025 artbyows · Alla rättigheter förbehållna</div>
+  <div class="footer-copy">© 2025 Oskar Svenbland</div>
   <div class="footer-links">
     <a href="#">Instagram</a>
-    <a href="#">Shop</a>
+    <a href="#">@ArtbyOws</a>
   </div>
 </footer>
 
@@ -579,34 +555,25 @@
   const ring = document.getElementById('cursorRing');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX+'px'; cursor.style.top = e.clientY+'px';
-    setTimeout(()=>{ ring.style.left=e.clientX+'px'; ring.style.top=e.clientY+'px'; }, 60);
+    setTimeout(()=>{ ring.style.left=e.clientX+'px'; ring.style.top=e.clientY+'px'; },60);
   });
-  document.querySelectorAll('a,button,.portfolio-card,.shop-card,.exh,.pill').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ cursor.style.transform='translate(-50%,-50%) scale(2)'; ring.style.opacity='0.3'; });
-    el.addEventListener('mouseleave',()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; ring.style.opacity='0.6'; });
+  document.querySelectorAll('a,button,.portfolio-card,.exh,.tag').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cursor.style.transform='translate(-50%,-50%) scale(2.5)'; ring.style.opacity='0.2'; });
+    el.addEventListener('mouseleave',()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; ring.style.opacity='0.5'; });
   });
 
   // Scroll reveal
   const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  },{threshold:0.12});
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
   // Portfolio filter
   function filterPortfolio(cat, btn) {
-    document.querySelectorAll('#portfolioGrid .portfolio-card').forEach(card=>{
-      card.style.display = (cat==='alla' || card.dataset.cat===cat) ? '' : 'none';
+    document.querySelectorAll('#portfolioGrid .portfolio-card').forEach(c=>{
+      c.style.display = (cat==='alla'||c.dataset.cat===cat) ? '' : 'none';
     });
-    btn.closest('.portfolio-filter').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-
-  // Shop filter
-  function filterShop(cat, btn) {
-    document.querySelectorAll('#shopGrid .shop-card').forEach(card=>{
-      card.style.display = (cat==='alla' || card.dataset.shopcat===cat) ? '' : 'none';
-    });
-    btn.closest('.portfolio-filter').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.closest('.filter-row').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
   }
 
@@ -617,29 +584,19 @@
     document.getElementById('modalMeta').textContent = meta;
     document.getElementById('modalDesc').textContent = desc;
     document.getElementById('modalImg').src = img;
-    document.getElementById('modalImg').alt = title;
     document.getElementById('modalBackdrop').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
   function closeModal() {
     document.getElementById('modalBackdrop').classList.remove('open');
     document.body.style.overflow = '';
   }
-
   function closeModalOutside(e) {
-    if (e.target === document.getElementById('modalBackdrop')) closeModal();
+    if(e.target===document.getElementById('modalBackdrop')) closeModal();
   }
-
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-  // Shop contact
-  function shopContact(product) {
-    document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});
-    setTimeout(()=>{ document.getElementById('inquiryType').value = 'Intresse för: '+product; }, 800);
-  }
-
-  // Tidigare toggle
+  // Tidigare
   function toggleTidigare() {
     document.getElementById('tidigareToggle').classList.toggle('open');
     document.getElementById('tidigareList').classList.toggle('open');
@@ -656,7 +613,7 @@
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
       e.preventDefault();
-      const t = document.querySelector(a.getAttribute('href'));
+      const t=document.querySelector(a.getAttribute('href'));
       if(t) t.scrollIntoView({behavior:'smooth'});
     });
   });
