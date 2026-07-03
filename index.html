@@ -171,6 +171,21 @@
   .form-note { font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:var(--ash); font-style:italic; }
   .form-success { display:none; font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; color:var(--orange); padding:3rem 0; }
 
+  /* PUBLICERINGAR */
+  #publiceringar { background:var(--sand); }
+  .pub-section { margin-bottom:3rem; }
+  .pub-section-label { font-family:'Nunito',sans-serif; font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--orange); margin-bottom:1.5rem; display:flex; align-items:center; gap:1rem; }
+  .pub-section-label::after { content:''; flex:1; height:1px; background:rgba(196,98,45,0.2); }
+  .pub-item { display:grid; grid-template-columns:60px 1fr; gap:2rem; padding:1.8rem 0; border-bottom:1px solid rgba(59,39,20,0.1); }
+  .pub-item:first-of-type { border-top:1px solid rgba(59,39,20,0.1); }
+  .pub-year { font-family:'Playfair Display',serif; font-style:italic; font-size:1.4rem; color:var(--orange); line-height:1; padding-top:0.2rem; }
+  .pub-title { font-family:'Playfair Display',serif; font-style:italic; font-size:1.3rem; color:var(--brown); margin-bottom:0.2rem; }
+  .pub-meta { font-family:'Nunito',sans-serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--ash); margin-bottom:0.8rem; }
+  .pub-desc { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--brown-lt); line-height:1.8; font-style:italic; }
+  .pub-link { display:inline-flex; align-items:center; gap:0.5rem; margin-top:0.8rem; font-family:'Nunito',sans-serif; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); text-decoration:none; border-bottom:1px solid rgba(196,98,45,0.3); padding-bottom:0.1rem; transition:all 0.25s; }
+  .pub-link:hover { color:var(--brown); border-bottom-color:var(--brown); }
+  .pub-empty { font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--ash); font-size:1rem; padding:1.5rem 0; border-top:1px solid rgba(59,39,20,0.1); }
+
   /* FOOTER */
   footer { background:var(--brown); padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
   .footer-brand { display:flex; align-items:center; gap:0.8rem; }
@@ -244,6 +259,7 @@
     <li><a href="#portfolio">Verk</a></li>
     <li><a href="#shop-cta">Shop</a></li>
     <li><a href="#kalender">Utställningar</a></li>
+    <li><a href="#publiceringar">Publiceringar</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
 </nav>
@@ -463,6 +479,40 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PUBLICERINGAR -->
+<section id="publiceringar">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Publiceringar</div>
+      <h2 class="sh">Böcker <em>&</em> Artiklar</h2>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         BÖCKER — lägg till nya här
+    ════════════════════════════════════════════════ -->
+    <div class="pub-section reveal">
+      <div class="pub-section-label">Böcker</div>
+      <div class="pub-item">
+        <div class="pub-year">2018</div>
+        <div class="pub-content">
+          <div class="pub-title">Blomma</div>
+          <div class="pub-meta">Diktsamling · Tryckt 2018</div>
+          <div class="pub-desc">Blomma är en poetisk resa genom livets skörhet, styrka och förvandling. I denna diktsamling bjuder konstnären och författaren in läsaren till en värld där känslor får slå rot och växa fritt.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         ARTIKLAR — lägg till nya här
+    ════════════════════════════════════════════════ -->
+    <div class="pub-section reveal">
+      <div class="pub-section-label">Artiklar & Publiceringar</div>
+      <div class="pub-empty">Artiklar tillkommer snart.</div>
+    </div>
+
   </div>
 </section>
 
