@@ -217,6 +217,23 @@
   .form-note { font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:var(--ash); font-style:italic; }
   .form-success { display:none; font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; color:var(--orange); padding:3rem 0; }
 
+  .article-gallery { margin-top:1rem; }
+  .article-thumb { width:160px; height:200px; object-fit:cover; border-radius:8px; border:2px solid var(--brown); cursor:pointer; transition:transform 0.25s, box-shadow 0.25s; }
+  .article-thumb:hover { transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--brown); }
+
+  /* ARTIKEL MODAL */
+  .article-backdrop { position:fixed; inset:0; z-index:900; background:rgba(26,16,8,0.92); display:flex; align-items:center; justify-content:center; padding:1rem; opacity:0; pointer-events:none; transition:opacity 0.3s; backdrop-filter:blur(4px); }
+  .article-backdrop.open { opacity:1; pointer-events:all; }
+  .article-modal { position:relative; max-width:700px; width:100%; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  .article-modal-img { width:100%; max-height:85vh; object-fit:contain; border-radius:8px; }
+  .article-nav { display:flex; align-items:center; gap:2rem; }
+  .article-nav-btn { background:var(--brown); color:var(--cream); border:none; width:44px; height:44px; border-radius:50%; font-size:1.1rem; cursor:pointer; transition:background 0.2s; display:flex; align-items:center; justify-content:center; }
+  .article-nav-btn:hover { background:var(--orange); }
+  .article-nav-btn:disabled { opacity:0.3; cursor:default; }
+  .article-counter { font-family:'Nunito',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(237,232,220,0.5); }
+  .article-close { position:absolute; top:-1rem; right:0; background:var(--brown); color:var(--cream); border:none; width:36px; height:36px; border-radius:50%; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
+  .article-close:hover { background:var(--orange); }
+
   /* PUBLICERINGAR */
   #publiceringar { background:var(--sand); }
   .pub-section { margin-bottom:3rem; }
@@ -461,6 +478,19 @@
   </div>
 </section>
 
+<!-- ARTIKEL MODAL -->
+<div class="article-backdrop" id="articleBackdrop" onclick="closeArticleOutside(event)">
+  <div class="article-modal">
+    <button class="article-close" onclick="closeArticle()">✕</button>
+    <img class="article-modal-img" id="articleImg" src="" alt="Artikel">
+    <div class="article-nav">
+      <button class="article-nav-btn" id="articlePrev" onclick="changeArticle(-1)">←</button>
+      <span class="article-counter" id="articleCounter">1 / 4</span>
+      <button class="article-nav-btn" id="articleNext" onclick="changeArticle(1)">→</button>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL -->
 <div class="modal-backdrop" id="modalBackdrop" onclick="closeModalOutside(event)">
   <div class="modal">
@@ -568,7 +598,19 @@
     ════════════════════════════════════════════════ -->
     <div class="pub-section reveal">
       <div class="pub-section-label">Artiklar & Publiceringar</div>
-      <div class="pub-empty">Artiklar tillkommer snart.</div>
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="pub-content">
+          <div class="pub-title">Tidningsartikel</div>
+          <div class="pub-meta">Publicerad 2025</div>
+          <div class="pub-desc">Klicka på bilden för att läsa artikeln.</div>
+          <div class="article-gallery">
+            <img src="VL1.jpg" alt="Artikel sida 1" class="article-thumb" onclick="openArticle(0)">
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -710,6 +752,33 @@
       if(t) t.scrollIntoView({behavior:'smooth'});
     });
   });
+
+  const articleImages = ['VL1.jpg','VL2.jpg','VL3.jpg','VL4.jpg'];
+  let articleIndex = 0;
+
+  function openArticle(i) {
+    articleIndex = i;
+    updateArticle();
+    document.getElementById('articleBackdrop').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeArticle() {
+    document.getElementById('articleBackdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeArticleOutside(e) {
+    if(e.target === document.getElementById('articleBackdrop')) closeArticle();
+  }
+  function changeArticle(dir) {
+    articleIndex = Math.max(0, Math.min(articleImages.length-1, articleIndex+dir));
+    updateArticle();
+  }
+  function updateArticle() {
+    document.getElementById('articleImg').src = articleImages[articleIndex];
+    document.getElementById('articleCounter').textContent = (articleIndex+1) + ' / ' + articleImages.length;
+    document.getElementById('articlePrev').disabled = articleIndex === 0;
+    document.getElementById('articleNext').disabled = articleIndex === articleImages.length-1;
+  }
 
   renderKommande();
 </script>
